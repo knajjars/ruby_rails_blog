@@ -1,7 +1,16 @@
+3.times do |topic|
+  Topic.create!(
+      title: "Topic #{topic}"
+  )
+end
+
+puts "Created 3 topics"
+
 10.times do |blog|
   Blog.create!(
       title: "Blog #{blog}",
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu mi ut sem efficitur consectetur. Pellentesque vitae lectus diam. Praesent faucibus lacus diam, fringilla hendrerit ipsum tempus eget. Nunc non orci ut libero pharetra vehicula. Pellentesque in viverra nisl, non porttitor velit. Aliquam eget malesuada magna, eget venenatis tellus. Vivamus pretium, leo sed semper elementum, mauris erat venenatis eros, at commodo nulla orci ut nisi. Suspendisse mattis eros et metus commodo tristique. Sed id est magna. Sed sodales ac ex ut sodales. Quisque consequat vulputate massa, sed iaculis diam bibendum facilisis. In aliquam interdum magna, a placerat sem iaculis at. Phasellus rutrum eros nulla. Fusce sed feugiat metus."
+      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu mi ut sem efficitur consectetur. Pellentesque vitae lectus diam. Praesent faucibus lacus diam, fringilla hendrerit ipsum tempus eget. Nunc non orci ut libero pharetra vehicula. Pellentesque in viverra nisl, non porttitor velit. Aliquam eget malesuada magna, eget venenatis tellus. Vivamus pretium, leo sed semper elementum, mauris erat venenatis eros, at commodo nulla orci ut nisi. Suspendisse mattis eros et metus commodo tristique. Sed id est magna. Sed sodales ac ex ut sodales. Quisque consequat vulputate massa, sed iaculis diam bibendum facilisis. In aliquam interdum magna, a placerat sem iaculis at. Phasellus rutrum eros nulla. Fusce sed feugiat metus.",
+      topic: Topic.find(rand(1..3))
   )
 end
 
