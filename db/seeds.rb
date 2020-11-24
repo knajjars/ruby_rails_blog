@@ -36,3 +36,12 @@ puts "Created 5 skills"
 end
 
 puts "Created 9 portfolios"
+
+3.times do |technology|
+  Technology.create!(
+      name: "Technology #{technology}",
+      portfolio: Portfolio.find(rand(1..9))
+  )
+end
+
+puts "Created 3 technologies"
