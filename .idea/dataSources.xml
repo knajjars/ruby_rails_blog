@@ -18,5 +18,21 @@
         </library>
       </libraries>
     </data-source>
+    <data-source source="LOCAL" name="Rails my_app: development" uuid="62355815-7e10-442d-b160-65089fc0c637">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/development.sqlite3</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails my_app: test" uuid="b020200b-adb0-4ff0-ace0-d87356b08f84">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/test.sqlite3</jdbc-url>
+    </data-source>
   </component>
 </project>
