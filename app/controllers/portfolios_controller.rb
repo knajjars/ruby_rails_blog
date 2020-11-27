@@ -3,7 +3,7 @@ class PortfoliosController < ApplicationController
   before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
 
   def index
-    @portfolio_items = Portfolio.all
+    @portfolios = Portfolio.all
   end
 
   def new
@@ -29,7 +29,6 @@ class PortfoliosController < ApplicationController
 
   def update
     @portfolio = Portfolio.find(params[:id])
-
     respond_to do |format|
       if @portfolio.update(portfolio_params)
         format.html { redirect_to portfolios_path, notice: 'Portfolio was successfully updated.' }
@@ -58,7 +57,7 @@ class PortfoliosController < ApplicationController
   end
 
   def portfolio_params
-    params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name])
+    params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name, :id])
   end
 
 end
