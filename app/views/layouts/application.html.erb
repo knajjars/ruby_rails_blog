@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= @page_title %></title>
   <meta name="keywords" content="<%= @seo_keywords %>">
   <%= csrf_meta_tags %>
@@ -12,14 +14,11 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-
 <div>
-
   <%= render 'shared/navbar' %>
   <%= login_helper %>
-
 </div>
-<body>
+<body class="d-flex h-100 text-center text-white bg-dark">
 <%= yield %>
 </body>
 </html>
