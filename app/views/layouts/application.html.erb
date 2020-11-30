@@ -14,11 +14,15 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<div>
-  <%= render 'shared/navbar' %>
-  <%= login_helper %>
-</div>
+
 <body class="d-flex h-100 text-center text-white bg-dark">
-<%= yield %>
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+  <%= render 'shared/application_navbar' %>
+  <%= yield %>
+  <%= render 'shared/application_footer' %>
+
+</div>
 </body>
+
 </html>
