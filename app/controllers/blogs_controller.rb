@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   layout 'blog'
   before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
-  access all: [:index, :show], user: {except: [:destroy, :edit, :new, :create, :update]}, site_admin: :all
+  access all: [:index, :show], user: {except: [:destroy, :edit, :new, :create, :update, :toggle_status]}, site_admin: :all
 
   # GET /blogs
   # GET /blogs.json
@@ -67,7 +67,7 @@ class BlogsController < ApplicationController
       @blog.published!
     end
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: "Blog status changed to #{@blog.status}." }
+      format.html { redirect_to @blog, notice: "Blog status changed to #{@blog.status}." }
     end
   end
 
