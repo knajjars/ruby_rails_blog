@@ -11,17 +11,14 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
 
 <body class="d-flex h-100 text-center text-white bg-dark">
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
-  <%= render 'shared/application_navbar' %>
-  <%= yield %>
-  <%= render 'shared/application_footer' %>
+  <%= render 'shared/navbar' %>
 
+  <%= yield %>
+  <%= render 'shared/footer' %>
 </div>
 </body>
 

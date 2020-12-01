@@ -11,9 +11,6 @@
   <%= stylesheet_link_tag 'blogs', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
 <body>
 <div class="container">
   <header class="blog-header py-3">
@@ -24,7 +21,9 @@
         <a class="blog-header-logo text-dark" href="#">Blogs</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
-        <%= login_helper 'nav-link' %>
+        <% if current_user.is_a?(User) %>
+          <p>Hello, <%= current_user.first_name %></p>
+        <% end %>
       </div>
     </div>
   </header>
@@ -36,5 +35,7 @@
   </div>
 </div>
 <%= yield %>
+<%= render 'shared/footer' %>
 </body>
+
 </html>
