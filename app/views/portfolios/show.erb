@@ -1,12 +1,25 @@
-<%= image_tag @portfolio.main_image unless @portfolio.main_image.nil? %>
+<main class="container">
+  <article class="hero-post">
+    <%= image_tag @portfolio.main_image unless @portfolio.main_image.nil? %>
+    <h1><%= link_to @portfolio.title, @portfolio, class: "hero-post-title" %></h1>
+    <em><%= @portfolio.subtitle %></em>
+    <p><%= @portfolio.body %></p>
 
-<h1><%= @portfolio.title %></h1>
-<em><%= @portfolio.subtitle %></em>
-<p><%= @portfolio.body %></p>
-<h3>Technologies used</h3>
-<ul>
-  <% @portfolio.technologies.each do |t| %>
-    <li><%= t.name %></li>
-  <% end %>
-</ul>
-<%= link_to "Back", portfolios_path %>
+    <p class="hero-post-meta"><%= distance_of_time_in_words @portfolio.created_at, Time.now %> ago</p>
+    <% if logged_in? :site_admin %>
+      <p class="hero-post-meta">
+        <%= link_to 'Edit', edit_portfolio_path(@portfolio), class: "btn btn-primary" %>
+        <%= link_to 'Destroy', @portfolio, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+      </p>
+    <% end %>
+
+    <h3>Technologies used</h3>
+    <ul>
+      <% @portfolio.technologies.each do |t| %>
+        <li><%= t.name %></li>
+      <% end %>
+    </ul>
+
+    <%= link_to "Back", portfolios_path %>
+  </article>
+</main>
