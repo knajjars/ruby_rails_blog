@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <title><%= @page_title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="<%= @seo_keywords %>">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
@@ -9,16 +11,12 @@
   <%= stylesheet_link_tag 'portfolios', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
-
-<div>
+<div class="container">
   <%= render 'shared/navbar' %>
-  <%= login_helper %>
-
 </div>
 <body>
 <%= yield %>
+<%= render 'shared/footer' %>
 </body>
 </html>

@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+  
   def login_helper style = ""
     if current_user.is_a?(GuestUser)
       (link_to 'Log in', new_user_session_path, class: style) +

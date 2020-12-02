@@ -6,15 +6,15 @@ end
 
 puts "Created 3 topics"
 
-10.times do |blog|
+50.times do |blog|
   Blog.create!(
       title: "Blog #{blog}",
       body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu mi ut sem efficitur consectetur. Pellentesque vitae lectus diam. Praesent faucibus lacus diam, fringilla hendrerit ipsum tempus eget. Nunc non orci ut libero pharetra vehicula. Pellentesque in viverra nisl, non porttitor velit. Aliquam eget malesuada magna, eget venenatis tellus. Vivamus pretium, leo sed semper elementum, mauris erat venenatis eros, at commodo nulla orci ut nisi. Suspendisse mattis eros et metus commodo tristique. Sed id est magna. Sed sodales ac ex ut sodales. Quisque consequat vulputate massa, sed iaculis diam bibendum facilisis. In aliquam interdum magna, a placerat sem iaculis at. Phasellus rutrum eros nulla. Fusce sed feugiat metus.",
-      topic: Topic.find(rand(1..3))
+      topic: Topic.last
   )
 end
 
-puts "Created 10 blogs"
+puts "Created 50 blogs"
 
 5.times do |skill|
   Skill.create!(
@@ -40,7 +40,7 @@ puts "Created 9 portfolios"
 3.times do |technology|
   Technology.create!(
       name: "Technology #{technology}",
-      portfolio: Portfolio.find(rand(1..9))
+      portfolio: Portfolio.last
   )
 end
 
