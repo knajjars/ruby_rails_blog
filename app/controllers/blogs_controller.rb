@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   layout 'blog'
   before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
-  access all: [:index, :show], user: {except: [:destroy, :edit, :new, :create, :update, :toggle_status]}, site_admin: :all
+  access all: [:index, :show], user: { except: [:destroy, :edit, :new, :create, :update, :toggle_status] }, site_admin: :all
 
   # GET /blogs
   # GET /blogs.json
@@ -14,6 +14,7 @@ class BlogsController < ApplicationController
   def show
     @page_title = @blog.title
     @seo_keywords = @blog.body
+    @comment = Comment.new
   end
 
   # GET /blogs/new
@@ -74,7 +75,7 @@ class BlogsController < ApplicationController
   private
 
   def set_blog
-    @blog = Blog.friendly.find(params[:id])
+    @blog = Blog.includes(:comments).friendly.find(params[:id])
   end
 
   def blog_params

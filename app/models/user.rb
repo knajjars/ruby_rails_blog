@@ -7,11 +7,12 @@ class User < ApplicationRecord
   petergate(roles: [:site_admin], multiple: false) ##
   ############################################################################################ 
 
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   validates_presence_of :name
+
+  has_many :comments, dependent: :destroy
 
   def first_name
     self.name.split.first
