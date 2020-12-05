@@ -6,15 +6,24 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @pagy, @blogs = pagy Blog.all
+    if logged_in?(:site_admin)
+      @pagy, @blogs = pagy Blog.recent.all
+    else
+      @pagy, @blogs = pagy Blog.recent.published
+    end
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
-    @page_title = @blog.title
-    @seo_keywords = @blog.body
-    @comment = Comment.new
+    if logged_in?(:site_admin) || @blog.published?
+
+      @page_title = @blog.title
+      @seo_keywords = @blog.body
+      @comment = Comment.new
+    else
+      redirect_to blogs_url
+    end
   end
 
   # GET /blogs/new
@@ -79,6 +88,6 @@ class BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :body)
+    params.require(:blog).permit(:title, :body, :topic_id)
   end
 end
