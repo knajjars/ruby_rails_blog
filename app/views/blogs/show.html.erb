@@ -1,14 +1,20 @@
 <main class="container">
   <article class="blog-post">
     <h1><%= @blog.title %></h1>
-
     <p class="blog-post-meta"><%= distance_of_time_in_words @blog.created_at, Time.now %> ago</p>
+
+
+    <nav class="breadcrumb">
+      <%= link_to 'Home', root_path, class: "breadcrumb-item" %>
+      <%= link_to @blog.topic.title.capitalize, root_path, class: "breadcrumb-item" %>
+      <span class="breadcrumb-item active"><%= @blog.title.capitalize %></span>
+    </nav>
     <% if logged_in? :site_admin %>
-      <p class="blog-post-meta">
-        <%= link_to @blog.status.capitalize, toggle_status_blog_path(@blog), method: :post %>
-        <%= link_to 'Edit', edit_blog_path(@blog) %>
-        <%= link_to 'Destroy', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </p>
+      <%= link_to @blog.status.capitalize, toggle_status_blog_path(@blog), method: :post, class: "breadcrumb-item" %>
+      <span class="float-end">
+            <%= link_to icon('fas', 'pencil-alt'), edit_blog_path(@blog) %>
+        <%= link_to icon('fas', 'trash'), @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </span>
     <% end %>
 
     <p>

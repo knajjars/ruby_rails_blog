@@ -3,7 +3,7 @@
   <% if logged_in? :site_admin %>
     <%= link_to blog.status.capitalize, toggle_status_blog_path(blog), method: :post %>
     <%= link_to 'Edit', edit_blog_path(blog) %>
-    <%= link_to 'Destroy', blog, method: :delete, data: {confirm: 'Are you sure?'} %>
+    <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
   <p class="blog-post-meta"><%= distance_of_time_in_words blog.created_at, Time.now %> ago</p>
   <p><%= blog.body %></p>
